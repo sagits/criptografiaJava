@@ -13,18 +13,55 @@ public class Main {
 
 		System.out.println("Frase original: " + frase);
 		System.out.println("");
-		// TODO Auto-generated method stub
+
+		ceasarComLoop(frase, "f", 100);
+		System.out.println("");
+
 		ceasar(frase, "f");
 		System.out.println("");
 
 		ceasarFt(frase, "f".toCharArray()[0]);
-
 		System.out.println("");
 
-		int[] aa = { 3, 2, 5 };
+		int[] aa = {3,2,5};
 		discos(frase, aa);
+		System.out.println("");
 
 	}
+
+	public static void ceasarComLoop(String msg, String c, int loop) {
+		String alfabeto = "abcdefghijklmnopqrstuvxwyz ";
+		int chave = alfabeto.indexOf(c);
+		
+		String fraseCrypt = "";
+		String fraseDeCrypt = "";
+		
+		String other = msg;
+		for (int j = 0; j < loop; j++) {
+			String m = "";
+			for (int i = 0; i < other.length(); i++) {
+				m += (char) (other.charAt(i) + chave);
+			}
+			other = m;
+		}
+		fraseCrypt = other;
+		
+		for (int j = 0; j < loop; j++) {
+			String m = "";
+			
+			for (int i = 0; i < other.length(); i++) {
+				m += (char) (other.charAt(i) - chave);
+			}
+			other = m;
+		}
+		fraseDeCrypt = other;
+		
+		System.out.println("Criptografia de Cesar com loop");
+		System.out.println("");
+		System.out.println("Frase crip: " + fraseCrypt);
+		System.out.println("Frase desc: " + fraseDeCrypt);
+	}
+
 
 	public static void ceasar(String msg, String c) {
 		String alfabeto = "abcdefghijklmnopqrstuvxwyz ";
